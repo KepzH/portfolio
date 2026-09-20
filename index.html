@@ -185,39 +185,35 @@
         <h2>Something I built.</h2>
     </div>
 
-    <div class="featured-project">
+<div class="winrate-calculator">
 
-        <div class="featured-image">
-            <img
-                src="assets/snbp-preview.png"
-                alt="Kalkulator SNBP Preview"
-            >
-        </div>
+    <h3>Try it yourself</h3>
 
-        <div class="featured-content">
+    <input
+        type="number"
+        id="currentWR"
+        placeholder="Current Winrate (%)"
+    >
 
-            <p class="featured-label">
-                WEB APPLICATION
-            </p>
+    <input
+        type="number"
+        id="currentMatches"
+        placeholder="Current Matches"
+    >
 
-            <h3>
-                Kalkulator SNBP
-            </h3>
+    <input
+        type="number"
+        id="targetWR"
+        placeholder="Target Winrate (%)"
+    >
 
-            <p class="featured-description">
-                A web application designed to help students
-                simulate and analyze their SNBP admission chances
-                using academic data and visual statistics.
-            </p>
+    <button onclick="calculateWinrate()">
+        Calculate
+    </button>
 
-            <div class="featured-tech">
-                <span>HTML</span>
-                <span>CSS</span>
-                <span>JavaScript</span>
-                <span>PWA</span>
-                <span>Chart.js</span>
-            </div>
+    <p id="result">Enter your stats.</p>
 
+</div>
             <div class="featured-buttons">
 
                 <a
@@ -452,6 +448,7 @@
 
     </footer>
 
+    <script src="script.js"></script>
 </body>
 
 </html> 
