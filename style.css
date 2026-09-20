@@ -794,6 +794,21 @@ footer {
         letter-spacing: -3px;
     }
 
+    .hero-photo {
+    position: relative;
+    right: auto;
+    top: auto;
+    transform: none;
+    width: 180px;
+    height: 230px;
+    margin: 40px auto 0;
+    }
+
+    .hero {
+    min-height: auto;
+    padding-bottom: 70px;
+    }
+    
     .section-title h2 {
         font-size: 38px;
     }
