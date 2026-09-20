@@ -1,19 +1,65 @@
+const totalInput = document.getElementById("currentMatches");
+const wrInput = document.getElementById("currentWR");
+const targetInput = document.getElementById("targetWR");
+const result = document.getElementById("result");
+
 function calculateWinrate() {
-    const currentWR = parseFloat(document.getElementById("currentWR").value);
-    const currentMatches = parseInt(document.getElementById("currentMatches").value);
-    const targetWR = parseFloat(document.getElementById("targetWR").value);
+    const total = parseInt(totalInput.value);
+    const wr = parseFloat(wrInput.value);
+    const targetWR = parseFloat(targetInput.value);
 
-    const currentWins = Math.round(currentWR / 100 * currentMatches);
-
-    let matches = 0;
-
-    while (
-        ((currentWins + matches) / (currentMatches + matches)) * 100
-        < targetWR
-    ) {
-        matches++;
+    // Total Match
+    if (!Number.isInteger(total) || total <= 0) {
+        result.textContent = "Input valid match total";
+        return;
     }
 
-    document.getElementById("result").textContent =
-        `${matches} matches needed`;
+    // WR
+    if (isNaN(wr) || wr <= 0 || wr >= 100) {
+        result.textContent = "Input valid winrate";
+        return;
+    }
+
+    // Sama persis dengan Kotlin:
+    // val win = ((w / 100) * t).toInt()
+    const win = Math.trunc((wr / 100) * total);
+
+    // Sama dengan:
+    // val lose = t - win
+    const lose = total - win;
+
+    let funText;
+
+    // Target WR
+    if (
+        !isNaN(targetWR) &&
+        targetWR > 0 &&
+        targetWR < 100
+    ) {
+        const needed =
+            ((targetWR / 100 * total - win) /
+            (1 - targetWR / 100));
+
+        if (needed <= 0) {
+            funText = "Your Winrate is already above target!";
+        } else {
+            funText =
+                `Need ${Math.trunc(needed)} win without lose to reach ${targetWR}%`;
+        }
+
+    } else {
+        funText = "Input Winrate Target";
+    }
+
+    result.innerHTML = `
+        <strong>Win: ${win} | Lose: ${lose}</strong>
+        <br>
+        <span>${funText}</span>
+    `;
 }
+
+// Android lu menghitung setiap input berubah,
+// jadi web-nya kita bikin sama.
+totalInput.addEventListener("input", calculateWinrate);
+wrInput.addEventListener("input", calculateWinrate);
+targetInput.addEventListener("input", calculateWinrate);

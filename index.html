@@ -187,55 +187,33 @@
 
 <div class="winrate-calculator">
 
-    <h3>Try it yourself</h3>
-
-    <input
-        type="number"
-        id="currentWR"
-        placeholder="Current Winrate (%)"
-    >
+    <h3>Winrate Checker</h3>
 
     <input
         type="number"
         id="currentMatches"
-        placeholder="Current Matches"
+        placeholder="Match Total"
+    >
+
+    <input
+        type="number"
+        id="currentWR"
+        placeholder="Current Winrate"
+        step="0.01"
     >
 
     <input
         type="number"
         id="targetWR"
-        placeholder="Target Winrate (%)"
+        placeholder="Winrate Target"
+        step="0.01"
     >
 
-    <button onclick="calculateWinrate()">
-        Calculate
-    </button>
-
-    <p id="result">Enter your stats.</p>
+    <div class="calculator-result">
+        <p id="result">-</p>
+    </div>
 
 </div>
-            <div class="featured-buttons">
-
-                <a
-                    href="https://github.com/KepzH"
-                    target="_blank"
-                    class="btn primary"
-                >
-                    View on GitHub ↗
-                </a>
-
-                <a
-                    href="#"
-                    class="btn"
-                >
-                    Live Demo ↗
-                </a>
-
-            </div>
-
-        </div>
-
-    </div>
 
 </section>
 
